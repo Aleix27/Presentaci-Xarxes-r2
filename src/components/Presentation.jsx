@@ -11,6 +11,7 @@ import TTLDiagramSlide from '../slides/TTLDiagramSlide';
 import TracerouteSlide from '../slides/TracerouteSlide';
 import TcpdumpSlide from '../slides/TcpdumpSlide';
 import TcpdumpCaptureSlide from '../slides/TcpdumpCaptureSlide';
+import TcpdumpResultSlide from '../slides/TcpdumpResultSlide';
 import WiresharkIntroSlide from '../slides/WiresharkIntroSlide';
 import WiresharkInterfaceSlide from '../slides/WiresharkInterfaceSlide';
 import WiresharkFilterSlide from '../slides/WiresharkFilterSlide';
@@ -31,6 +32,7 @@ const slides = [
     TracerouteSlide,
     TcpdumpSlide,
     TcpdumpCaptureSlide,
+    TcpdumpResultSlide,
     WiresharkIntroSlide,
     WiresharkInterfaceSlide,
     WiresharkFilterSlide,
