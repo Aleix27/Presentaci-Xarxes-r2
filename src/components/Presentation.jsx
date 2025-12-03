@@ -1,67 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import IntroSlide from '../slides/IntroSlide';
-import IndexSlide from '../slides/IndexSlide';
-import ServicesSlide from '../slides/ServicesSlide';
-
-// DNS Section
-import DNSIntroSlide from '../slides/DNSIntroSlide';
-import DNSResolutionSlide from '../slides/DNSResolutionSlide';
-import DNSEfficiencySlide from '../slides/DNSEfficiencySlide';
-
-// WWW & HTTP Section
-import WWWIntroSlide from '../slides/WWWIntroSlide';
-import HTMLSlide from '../slides/HTMLSlide';
-import HTTPBasicsSlide from '../slides/HTTPBasicsSlide';
-import ConcurrencySlide from '../slides/ConcurrencySlide'; // New
-import HTTPRequestSlide from '../slides/HTTPRequestSlide';
-import VirtualHostSlide from '../slides/VirtualHostSlide'; // New
-import HTTPResponseSlide from '../slides/HTTPResponseSlide';
-import CachingSlide from '../slides/CachingSlide';
-import CookiesSlide from '../slides/CookiesSlide';
-import HTTP2Slide from '../slides/HTTP2Slide'; // New
-import HTTPSecuritySlide from '../slides/HTTPSecuritySlide';
-
-// Email Section
-import EmailArchSlide from '../slides/EmailArchSlide';
-import EmailProtocolsSlide from '../slides/EmailProtocolsSlide';
-import SMTPConversationSlide from '../slides/SMTPConversationSlide';
-import DKIMSlide from '../slides/DKIMSlide';
-
-import ConclusionSlide from '../slides/ConclusionSlide';
+import ObjectivesSlide from '../slides/ObjectivesSlide';
+import InstructionsSlide from '../slides/InstructionsSlide';
+import IPSlide from '../slides/IPSlide';
+import PingSlide from '../slides/PingSlide';
+import ICMPSlide from '../slides/ICMPSlide';
+import PingVariationsSlide from '../slides/PingVariationsSlide';
+import TTLSlide from '../slides/TTLSlide';
+import TTLDiagramSlide from '../slides/TTLDiagramSlide';
+import TracerouteSlide from '../slides/TracerouteSlide';
+import TcpdumpSlide from '../slides/TcpdumpSlide';
+import TcpdumpCaptureSlide from '../slides/TcpdumpCaptureSlide';
+import WiresharkIntroSlide from '../slides/WiresharkIntroSlide';
+import WiresharkInterfaceSlide from '../slides/WiresharkInterfaceSlide';
+import WiresharkFilterSlide from '../slides/WiresharkFilterSlide';
+import PacketInfoSlide from '../slides/PacketInfoSlide';
+import RequirementsSlide from '../slides/RequirementsSlide';
 import Background from './Background';
 import RotateDevicePrompt from './RotateDevicePrompt';
 
 const slides = [
     IntroSlide,
-    IndexSlide,
-    ServicesSlide,
-
-    // DNS
-    DNSIntroSlide,
-    DNSResolutionSlide,
-    DNSEfficiencySlide,
-
-    // WWW
-    WWWIntroSlide,
-    HTMLSlide,
-    HTTPBasicsSlide,
-    ConcurrencySlide,
-    HTTPRequestSlide,
-    VirtualHostSlide,
-    HTTPResponseSlide,
-    CachingSlide,
-    CookiesSlide,
-    HTTP2Slide,
-    HTTPSecuritySlide,
-
-    // Email
-    EmailArchSlide,
-    EmailProtocolsSlide,
-    SMTPConversationSlide,
-    DKIMSlide,
-
-    ConclusionSlide,
+    ObjectivesSlide,
+    InstructionsSlide,
+    IPSlide,
+    PingSlide,
+    ICMPSlide,
+    PingVariationsSlide,
+    TTLSlide,
+    TTLDiagramSlide,
+    TracerouteSlide,
+    TcpdumpSlide,
+    TcpdumpCaptureSlide,
+    WiresharkIntroSlide,
+    WiresharkInterfaceSlide,
+    WiresharkFilterSlide,
+    PacketInfoSlide,
+    RequirementsSlide
 ];
 
 const Presentation = () => {
