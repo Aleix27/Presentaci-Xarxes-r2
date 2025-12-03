@@ -20,9 +20,38 @@ const PingSlide = () => {
                 }}>
                     <div style={{ textAlign: 'center', zIndex: 2 }}>
                         <div style={{ fontSize: '3rem' }}>💻</div>
+                        <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Localhost</div>
+                    </div>
+
+                    <div style={{ flex: 1, position: 'relative', height: '4px', background: '#333', margin: '0 2rem', borderRadius: '2px' }}>
+                        {/* Packet */}
+                        <motion.div
+                            animate={{
+                                left: ['0%', '95%', '95%', '0%'], // Move from 0% to 95% and back
+                                scale: [1, 1.2, 1.2, 1]
+                            }}
+                            transition={{
+                                duration: 3,
+                                repeat: Infinity,
+                                times: [0, 0.45, 0.55, 1], // Timing for travel and pause
+                                ease: "easeInOut"
+                            }}
+                            style={{
+                                width: '20px',
+                                height: '20px',
+                                background: '#00f2ff',
+                                borderRadius: '50%',
+                                position: 'absolute',
+                                top: '-8px',
+                                boxShadow: '0 0 15px #00f2ff',
+                                zIndex: 3
+                            }}
+                        />
+
+                        {/* Ripple Effect at Destination (Server) */}
                         <motion.div
                             animate={{ opacity: [0, 1, 0], scale: [1, 2] }}
-                            transition={{ duration: 2.5, repeat: Infinity, times: [0.45, 0.5, 0.55] }}
+                            transition={{ duration: 3, repeat: Infinity, delay: 1.35, repeatDelay: 1.65 }} // Sync with arrival
                             style={{
                                 position: 'absolute',
                                 right: '-10px',
@@ -34,12 +63,28 @@ const PingSlide = () => {
                                 opacity: 0
                             }}
                         />
+
+                        {/* Ripple Effect at Source (Client return) */}
+                        <motion.div
+                            animate={{ opacity: [0, 1, 0], scale: [1, 2] }}
+                            transition={{ duration: 3, repeat: Infinity, delay: 2.85, repeatDelay: 0.15 }} // Sync with return
+                            style={{
+                                position: 'absolute',
+                                left: '-10px',
+                                top: '-15px',
+                                width: '30px',
+                                height: '30px',
+                                border: '2px solid #2ecc71',
+                                borderRadius: '50%',
+                                opacity: 0
+                            }}
+                        />
                     </div>
 
                     <div style={{ textAlign: 'center', zIndex: 2 }}>
                         <motion.div
                             animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ duration: 2.5, repeat: Infinity, times: [0.4, 0.5, 0.6] }}
+                            transition={{ duration: 3, repeat: Infinity, delay: 1.35 }}
                             style={{ fontSize: '3rem' }}
                         >
                             🌐
