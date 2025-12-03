@@ -57,6 +57,13 @@ const Presentation = () => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
 
+    // Ensure currentSlide is valid if slides array changes
+    useEffect(() => {
+        if (currentSlide >= slides.length) {
+            setCurrentSlide(slides.length - 1);
+        }
+    }, [slides.length]);
+
     // Scale and Rotate Logic
     useEffect(() => {
         const handleResize = () => {

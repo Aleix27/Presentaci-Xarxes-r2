@@ -1,6 +1,7 @@
 import React from 'react';
 import Slide from '../components/Slide';
 import { motion } from 'framer-motion';
+import TypingTerminal from '../components/TypingTerminal';
 
 const TcpdumpCaptureSlide = () => {
     return (
