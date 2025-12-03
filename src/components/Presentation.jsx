@@ -42,6 +42,7 @@ const slides = [
 
 const Presentation = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [scale, setScale] = useState(1);
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -54,6 +55,27 @@ const Presentation = () => {
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
+    }, []);
+
+    // Scale Logic
+    useEffect(() => {
+        const handleResize = () => {
+            const baseWidth = 1920;
+            const baseHeight = 1080;
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            const scaleX = windowWidth / baseWidth;
+            const scaleY = windowHeight / baseHeight;
+            const newScale = Math.min(scaleX, scaleY);
+
+            setScale(newScale);
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     // Swipe Logic
@@ -90,31 +112,44 @@ const Presentation = () => {
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
             style={{
-                position: 'relative',
                 width: '100vw',
                 height: '100vh',
+                background: '#020617',
                 overflow: 'hidden',
-                background: '#020617', // Deep Slate
-                color: '#fff',
-                fontFamily: 'Inter, sans-serif'
-            }}>
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative'
+            }}
+        >
             <RotateDevicePrompt />
             <Background />
-            <AnimatePresence mode='wait'>
-                <CurrentSlideComponent key={currentSlide} />
-            </AnimatePresence>
 
+            {/* Scaled Container */}
             <div style={{
-                position: 'absolute',
-                bottom: '20px',
-                right: '20px',
-                opacity: 0.5,
-                fontSize: '0.8rem',
-                textAlign: 'right',
-                color: '#94a3b8'
+                width: '1920px',
+                height: '1080px',
+                transform: `scale(${scale})`,
+                transformOrigin: 'center center',
+                position: 'relative',
+                boxShadow: '0 0 50px rgba(0,0,0,0.5)',
+                overflow: 'hidden'
             }}>
-                Slide {currentSlide + 1} / {slides.length} <br />
-                Use ← → Arrow Keys
+                <AnimatePresence mode="wait">
+                    <CurrentSlideComponent key={currentSlide} />
+                </AnimatePresence>
+
+                {/* Navigation Hint */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '20px',
+                    right: '40px',
+                    color: 'rgba(255,255,255,0.3)',
+                    fontSize: '1.2rem',
+                    zIndex: 100
+                }}>
+                    {currentSlide + 1} / {slides.length}
+                </div>
             </div>
         </div>
     );

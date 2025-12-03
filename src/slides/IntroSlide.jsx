@@ -77,7 +77,7 @@ const IntroSlide = () => {
                         border: '1px solid rgba(255, 255, 255, 0.1)',
                         boxShadow: '0 0 20px rgba(0, 242, 255, 0.2)'
                     }}>
-                        <span style={{ color: '#f8fafc', fontWeight: 600, fontSize: '1.2rem' }}>Antoni Martínez Ballesté</span>
+                        <span style={{ color: '#f8fafc', fontWeight: 600, fontSize: '1.2rem' }}>Aleix Carles i Pol Mercader</span>
                     </div>
                 </motion.div>
 

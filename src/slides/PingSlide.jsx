@@ -9,37 +9,62 @@ const PingSlide = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', height: '100%', padding: '0 1rem' }}>
 
                 {/* Visual Animation */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 2rem', height: '100px' }}>
-                    <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '2.5rem' }}>💻</div>
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '0 2rem',
+                    height: '120px',
+                    background: 'rgba(255,255,255,0.02)',
+                    borderRadius: '16px'
+                }}>
+                    <div style={{ textAlign: 'center', zIndex: 2 }}>
+                        <div style={{ fontSize: '3rem' }}>💻</div>
                         <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Localhost</div>
                     </div>
 
-                    <div style={{ flex: 1, position: 'relative', height: '2px', background: '#333', margin: '0 1rem' }}>
+                    <div style={{ flex: 1, position: 'relative', height: '4px', background: '#333', margin: '0 2rem', borderRadius: '2px' }}>
                         {/* Packet */}
                         <motion.div
                             animate={{
                                 x: ['0%', '100%', '0%'],
-                                scale: [1, 1.2, 1]
+                                scale: [1, 1.5, 1]
                             }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                             style={{
-                                width: '12px',
-                                height: '12px',
+                                width: '16px',
+                                height: '16px',
                                 background: '#00f2ff',
                                 borderRadius: '50%',
                                 position: 'absolute',
-                                top: '-5px',
-                                boxShadow: '0 0 10px #00f2ff'
+                                top: '-6px',
+                                boxShadow: '0 0 15px #00f2ff',
+                                zIndex: 3
+                            }}
+                        />
+
+                        {/* Ripple Effect at Destination */}
+                        <motion.div
+                            animate={{ opacity: [0, 1, 0], scale: [1, 2] }}
+                            transition={{ duration: 2.5, repeat: Infinity, times: [0.45, 0.5, 0.55] }}
+                            style={{
+                                position: 'absolute',
+                                right: '-10px',
+                                top: '-15px',
+                                width: '30px',
+                                height: '30px',
+                                border: '2px solid #00f2ff',
+                                borderRadius: '50%',
+                                opacity: 0
                             }}
                         />
                     </div>
 
-                    <div style={{ textAlign: 'center' }}>
+                    <div style={{ textAlign: 'center', zIndex: 2 }}>
                         <motion.div
-                            animate={{ scale: [1, 1.1, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, times: [0, 0.5, 1] }}
-                            style={{ fontSize: '2.5rem' }}
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ duration: 2.5, repeat: Infinity, times: [0.4, 0.5, 0.6] }}
+                            style={{ fontSize: '3rem' }}
                         >
                             🌐
                         </motion.div>
