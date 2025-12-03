@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import IntroSlide from '../slides/IntroSlide';
 import ObjectivesSlide from '../slides/ObjectivesSlide';
-import InstructionsSlide from '../slides/InstructionsSlide';
 import IPSlide from '../slides/IPSlide';
 import PingSlide from '../slides/PingSlide';
 import ICMPSlide from '../slides/ICMPSlide';
@@ -17,12 +16,12 @@ import WiresharkInterfaceSlide from '../slides/WiresharkInterfaceSlide';
 import WiresharkFilterSlide from '../slides/WiresharkFilterSlide';
 import PacketInfoSlide from '../slides/PacketInfoSlide';
 import RequirementsSlide from '../slides/RequirementsSlide';
+import ThankYouSlide from '../slides/ThankYouSlide';
 import Background from './Background';
 
 const slides = [
     IntroSlide,
     ObjectivesSlide,
-    InstructionsSlide,
     IPSlide,
     PingSlide,
     ICMPSlide,
@@ -36,7 +35,8 @@ const slides = [
     WiresharkInterfaceSlide,
     WiresharkFilterSlide,
     PacketInfoSlide,
-    RequirementsSlide
+    RequirementsSlide,
+    ThankYouSlide
 ];
 
 const Presentation = () => {
