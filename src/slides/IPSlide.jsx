@@ -43,6 +43,13 @@ const IPSlide = () => {
                         <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Exemple: 192.168.1.137</p>
                     </motion.div>
                 </div>
+                <div style={{ marginTop: '2rem', width: '100%' }}>
+                    <TypingTerminal
+                        command="ip a"
+                        output={`1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n    inet 127.0.0.1/8 scope host lo\n       valid_lft forever preferred_lft forever\n2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000\n    link/ether 08:00:27:56:8a:c6 brd ff:ff:ff:ff:ff:ff\n    inet 192.168.1.35/24 brd 192.168.1.255 scope global dynamic eth0\n       valid_lft 86324sec preferred_lft 86324sec`}
+                        delay={0.5}
+                    />
+                </div>
             </div>
         </Slide>
     );

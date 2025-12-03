@@ -1,47 +1,47 @@
 import React from 'react';
 import Slide from '../components/Slide';
 import { motion } from 'framer-motion';
+import wiresharkImg from '../assets/wireshark_gui_mockup.png';
 
 const WiresharkInterfaceSlide = () => {
     return (
-        <Slide title="Wireshark: Interfície">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', height: '100%', padding: '0 2rem' }}>
-                <p>Abans de començar, cal triar la interfície (ex: <code>enp0s3</code> o <code>any</code>).</p>
-
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        style={{ textAlign: 'center' }}
-                    >
-                        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🦈</div>
-                        <div className="glass-panel" style={{ padding: '1rem' }}>
-                            Botó <strong>Iniciar</strong> (Aleta de tauró blau)
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 }}
-                        style={{ textAlign: 'center' }}
-                    >
-                        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🟥</div>
-                        <div className="glass-panel" style={{ padding: '1rem' }}>
-                            Botó <strong>Aturar</strong> (Quadrat vermell)
-                        </div>
-                    </motion.div>
-                </div>
+        <Slide title="Interfície de Wireshark">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', height: '100%', padding: '0 2rem', alignItems: 'center' }}>
+                <p style={{ textAlign: 'center', fontSize: '1.1rem', color: '#cbd5e1' }}>
+                    Visualització detallada de paquets en temps real.
+                </p>
 
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.7 }}
-                    style={{ fontSize: '0.9rem', color: '#94a3b8', textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}
+                    initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                    style={{
+                        width: '90%',
+                        maxWidth: '800px',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        boxShadow: '0 0 30px rgba(0, 242, 255, 0.2)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)'
+                    }}
                 >
-                    Nota: Veureu molts paquets <strong>ARP</strong> (trànsit broadcast) que no tenen a veure amb la vostra transmissió directa.
+                    <img
+                        src={wiresharkImg}
+                        alt="Wireshark Interface"
+                        style={{ width: '100%', height: 'auto', display: 'block' }}
+                    />
                 </motion.div>
+
+                <div style={{ display: 'flex', gap: '2rem', marginTop: '1rem' }}>
+                    <div className="glass-panel" style={{ padding: '1rem', fontSize: '0.9rem' }}>
+                        <span style={{ color: '#00f2ff' }}>●</span> Llista de Paquets
+                    </div>
+                    <div className="glass-panel" style={{ padding: '1rem', fontSize: '0.9rem' }}>
+                        <span style={{ color: '#7000ff' }}>●</span> Detalls del Protocol
+                    </div>
+                    <div className="glass-panel" style={{ padding: '1rem', fontSize: '0.9rem' }}>
+                        <span style={{ color: '#ff6b6b' }}>●</span> Bytes (Hex)
+                    </div>
+                </div>
             </div>
         </Slide>
     );

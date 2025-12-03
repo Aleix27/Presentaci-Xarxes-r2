@@ -81,14 +81,7 @@ const IntroSlide = () => {
                     </div>
                 </motion.div>
 
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2 }}
-                    style={{ marginTop: '2rem', fontSize: '0.8rem', color: '#64748b' }}
-                >
-                    Imatges de l'autor o Freepik
-                </motion.p>
+
             </div>
         </Slide>
     );

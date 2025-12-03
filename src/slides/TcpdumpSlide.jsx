@@ -40,6 +40,13 @@ const TcpdumpSlide = () => {
                         </ul>
                     </motion.div>
                 </div>
+                <div style={{ marginTop: '2rem' }}>
+                    <TypingTerminal
+                        command="sudo apt install tcpdump"
+                        output="Reading package lists... Done\nBuilding dependency tree... Done\ntcpdump is already the newest version."
+                        delay={0.5}
+                    />
+                </div>
             </div>
         </Slide>
     );
