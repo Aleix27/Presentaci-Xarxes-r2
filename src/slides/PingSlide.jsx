@@ -27,23 +27,23 @@ const PingSlide = () => {
                         {/* Packet */}
                         <motion.div
                             animate={{
-                                left: ['0%', '95%', '95%', '0%'], // Move from 0% to 95% and back
+                                left: ['0%', '95%', '95%', '0%'],
+                                backgroundColor: ['#00f2ff', '#00f2ff', '#2ecc71', '#2ecc71'], // Blue out, Green back
                                 scale: [1, 1.2, 1.2, 1]
                             }}
                             transition={{
                                 duration: 3,
                                 repeat: Infinity,
-                                times: [0, 0.45, 0.55, 1], // Timing for travel and pause
+                                times: [0, 0.45, 0.55, 1],
                                 ease: "easeInOut"
                             }}
                             style={{
                                 width: '20px',
                                 height: '20px',
-                                background: '#00f2ff',
                                 borderRadius: '50%',
                                 position: 'absolute',
                                 top: '-8px',
-                                boxShadow: '0 0 15px #00f2ff',
+                                boxShadow: '0 0 15px currentColor', // Use current color for glow
                                 zIndex: 3
                             }}
                         />
