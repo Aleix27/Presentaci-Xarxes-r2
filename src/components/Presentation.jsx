@@ -18,7 +18,6 @@ import WiresharkFilterSlide from '../slides/WiresharkFilterSlide';
 import PacketInfoSlide from '../slides/PacketInfoSlide';
 import RequirementsSlide from '../slides/RequirementsSlide';
 import Background from './Background';
-import RotateDevicePrompt from './RotateDevicePrompt';
 
 const slides = [
     IntroSlide,
@@ -43,6 +42,7 @@ const slides = [
 const Presentation = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [scale, setScale] = useState(1);
+    const [rotation, setRotation] = useState(0);
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -57,17 +57,28 @@ const Presentation = () => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
 
-    // Scale Logic
+    // Scale and Rotate Logic
     useEffect(() => {
         const handleResize = () => {
             const baseWidth = 1920;
             const baseHeight = 1080;
             const windowWidth = window.innerWidth;
             const windowHeight = window.innerHeight;
+            const isPortrait = windowHeight > windowWidth;
 
-            const scaleX = windowWidth / baseWidth;
-            const scaleY = windowHeight / baseHeight;
-            const newScale = Math.min(scaleX, scaleY);
+            let newScale;
+
+            if (isPortrait) {
+                setRotation(90);
+                const scaleX = windowHeight / baseWidth;
+                const scaleY = windowWidth / baseHeight;
+                newScale = Math.min(scaleX, scaleY);
+            } else {
+                setRotation(0);
+                const scaleX = windowWidth / baseWidth;
+                const scaleY = windowHeight / baseHeight;
+                newScale = Math.min(scaleX, scaleY);
+            }
 
             setScale(newScale);
         };
@@ -122,14 +133,13 @@ const Presentation = () => {
                 position: 'relative'
             }}
         >
-            <RotateDevicePrompt />
             <Background />
 
             {/* Scaled Container */}
             <div style={{
                 width: '1920px',
                 height: '1080px',
-                transform: `scale(${scale})`,
+                transform: `rotate(${rotation}deg) scale(${scale})`,
                 transformOrigin: 'center center',
                 position: 'relative',
                 boxShadow: '0 0 50px rgba(0,0,0,0.5)',
