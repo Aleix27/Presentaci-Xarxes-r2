@@ -20,30 +20,6 @@ const PingSlide = () => {
                 }}>
                     <div style={{ textAlign: 'center', zIndex: 2 }}>
                         <div style={{ fontSize: '3rem' }}>💻</div>
-                        <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Localhost</div>
-                    </div>
-
-                    <div style={{ flex: 1, position: 'relative', height: '4px', background: '#333', margin: '0 2rem', borderRadius: '2px' }}>
-                        {/* Packet */}
-                        <motion.div
-                            animate={{
-                                x: ['0%', '100%', '0%'],
-                                scale: [1, 1.5, 1]
-                            }}
-                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                            style={{
-                                width: '16px',
-                                height: '16px',
-                                background: '#00f2ff',
-                                borderRadius: '50%',
-                                position: 'absolute',
-                                top: '-6px',
-                                boxShadow: '0 0 15px #00f2ff',
-                                zIndex: 3
-                            }}
-                        />
-
-                        {/* Ripple Effect at Destination */}
                         <motion.div
                             animate={{ opacity: [0, 1, 0], scale: [1, 2] }}
                             transition={{ duration: 2.5, repeat: Infinity, times: [0.45, 0.5, 0.55] }}
