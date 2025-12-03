@@ -4,118 +4,118 @@ import { motion } from 'framer-motion';
 
 const TTLDiagramSlide = () => {
     return (
-        <Slide title="Explicació Gràfica TTL">
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                height: '100%',
-                padding: '0 1rem',
-                perspective: '1000px'
-            }}>
+        <Slide title="Funcionament del TTL">
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', padding: '0 2rem' }}>
 
-                {/* Source */}
-                <div style={{ textAlign: 'center', zIndex: 10 }}>
-                    <div style={{ fontSize: '3rem' }}>💻</div>
-                    <p>Origen</p>
-                </div>
+                {/* Network Diagram */}
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                    maxWidth: '900px',
+                    position: 'relative',
+                    height: '200px'
+                }}>
+                    {/* Source */}
+                    <div style={{ textAlign: 'center', zIndex: 2 }}>
+                        <div style={{ fontSize: '3rem' }}>💻</div>
+                        <div style={{ color: '#94a3b8' }}>Origen</div>
+                    </div>
 
-                {/* Packet Path */}
-                <div style={{ flex: 1, display: 'flex', justifyContent: 'space-around', alignItems: 'center', position: 'relative' }}>
+                    {/* Router 1 */}
+                    <div style={{ textAlign: 'center', zIndex: 2 }}>
+                        <div style={{ fontSize: '3rem' }}>🔄</div>
+                        <div style={{ color: '#94a3b8' }}>Router 1</div>
+                    </div>
 
-                    {/* Moving Packet */}
+                    {/* Router 2 */}
+                    <div style={{ textAlign: 'center', zIndex: 2 }}>
+                        <div style={{ fontSize: '3rem' }}>🔄</div>
+                        <div style={{ color: '#94a3b8' }}>Router 2</div>
+                    </div>
+
+                    {/* Destination */}
+                    <div style={{ textAlign: 'center', zIndex: 2 }}>
+                        <div style={{ fontSize: '3rem' }}>🌐</div>
+                        <div style={{ color: '#94a3b8' }}>Destí</div>
+                    </div>
+
+                    {/* Connecting Line */}
+                    <div style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50px',
+                        right: '50px',
+                        height: '4px',
+                        background: '#333',
+                        zIndex: 1,
+                        transform: 'translateY(-50%)'
+                    }} />
+
+                    {/* Animated Packet with TTL */}
                     <motion.div
                         animate={{
-                            x: ['0%', '33%', '33%', '66%', '66%', '100%'],
-                            opacity: [1, 1, 1, 1, 1, 0]
+                            left: ['5%', '33%', '33%', '66%', '66%', '95%'], // Stop at each router
+                            backgroundColor: ['#00f2ff', '#00f2ff', '#f1c40f', '#f1c40f', '#e74c3c', '#e74c3c'] // Change color as TTL drops
                         }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "linear", times: [0, 0.3, 0.4, 0.7, 0.8, 1] }}
+                        transition={{
+                            duration: 6,
+                            repeat: Infinity,
+                            times: [0, 0.2, 0.4, 0.6, 0.8, 1],
+                            ease: "easeInOut"
+                        }}
                         style={{
                             position: 'absolute',
-                            left: '5%',
-                            top: '-50px',
-                            zIndex: 20,
-                            width: '90%' // Container width reference
+                            top: '50%',
+                            width: '40px',
+                            height: '40px',
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontWeight: 'bold',
+                            color: '#000',
+                            fontSize: '0.8rem',
+                            zIndex: 3,
+                            marginTop: '-20px',
+                            boxShadow: '0 0 20px currentColor'
                         }}
                     >
-                        <div style={{
-                            width: 'fit-content',
-                            background: '#00f2ff',
-                            padding: '5px 10px',
-                            borderRadius: '4px',
-                            fontWeight: 'bold',
-                            boxShadow: '0 0 15px #00f2ff',
-                            color: '#000'
-                        }}>
+                        <motion.span
+                            animate={{ opacity: [1, 1, 0, 1, 0, 1] }} // Blink text on change
+                            transition={{ duration: 6, repeat: Infinity, times: [0, 0.39, 0.4, 0.79, 0.8, 1] }}
+                        >
                             TTL
-                        </div>
+                        </motion.span>
                     </motion.div>
 
-                    {/* Routers as 3D Cards */}
-                    {[1, 2].map((id, index) => (
-                        <div key={id} style={{ position: 'relative' }}>
-                            <motion.div
-                                initial={{ rotateY: 45, opacity: 0 }}
-                                animate={{ rotateY: 0, opacity: 1 }}
-                                transition={{ delay: 0.5 * index }}
-                                style={{
-                                    width: '100px',
-                                    height: '120px',
-                                    background: 'rgba(255,255,255,0.05)',
-                                    border: '1px solid rgba(255,255,255,0.2)',
-                                    borderRadius: '12px',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    transformStyle: 'preserve-3d',
-                                    boxShadow: '0 10px 30px rgba(0,0,0,0.3)'
-                                }}
-                            >
-                                <div style={{ fontSize: '2.5rem' }}>🔄</div>
-                                <div style={{ fontSize: '0.8rem', marginTop: '10px' }}>Rúter {id}</div>
-                            </motion.div>
+                    {/* Floating "-1" indicators */}
+                    <motion.div
+                        animate={{ opacity: [0, 1, 0], y: [0, -30, -40] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: 1.2, repeatDelay: 4 }}
+                        style={{ position: 'absolute', left: '33%', top: '30%', color: '#ff6b6b', fontWeight: 'bold', fontSize: '1.5rem' }}
+                    >
+                        -1
+                    </motion.div>
 
-                            {/* Decrement Animation */}
-                            <motion.div
-                                animate={{
-                                    y: [0, -20, -20],
-                                    opacity: [0, 1, 0],
-                                    scale: [0.5, 1.5, 1]
-                                }}
-                                transition={{
-                                    duration: 1,
-                                    repeat: Infinity,
-                                    repeatDelay: 5,
-                                    delay: index === 0 ? 1.8 : 4.2 // Sync with packet stop
-                                }}
-                                style={{
-                                    position: 'absolute',
-                                    top: '-30px',
-                                    left: '50%',
-                                    transform: 'translateX(-50%)',
-                                    color: '#ff6b6b',
-                                    fontWeight: 'bold',
-                                    fontSize: '1.5rem',
-                                    textShadow: '0 0 10px #ff6b6b'
-                                }}
-                            >
-                                -1
-                            </motion.div>
-                        </div>
-                    ))}
-
+                    <motion.div
+                        animate={{ opacity: [0, 1, 0], y: [0, -30, -40] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: 3.6, repeatDelay: 4 }}
+                        style={{ position: 'absolute', left: '66%', top: '30%', color: '#ff6b6b', fontWeight: 'bold', fontSize: '1.5rem' }}
+                    >
+                        -1
+                    </motion.div>
                 </div>
 
-                {/* Destination */}
-                <div style={{ textAlign: 'center', zIndex: 10 }}>
-                    <div style={{ fontSize: '3rem' }}>🌐</div>
-                    <p>Destí</p>
+                <div style={{ marginTop: '3rem', textAlign: 'center', maxWidth: '800px' }}>
+                    <p style={{ fontSize: '1.2rem', lineHeight: '1.6' }}>
+                        Cada vegada que un paquet passa per un <strong>Router</strong>, el seu <strong style={{ color: '#f1c40f' }}>TTL</strong> es redueix en 1.
+                    </p>
+                    <p style={{ color: '#94a3b8', marginTop: '1rem' }}>
+                        Si el TTL arriba a 0, el paquet es descarta i s'envia un error "Time Exceeded".
+                    </p>
                 </div>
-
-            </div>
-            <div style={{ textAlign: 'center', marginTop: '2rem', color: '#94a3b8' }}>
-                Cada salt (hop) decrementa el TTL en 1.
             </div>
         </Slide>
     );
